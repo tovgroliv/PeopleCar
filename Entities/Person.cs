@@ -7,10 +7,23 @@ namespace PeopleCar.Entities
 		public string Nickname { get; set; }
 		public Point Coordinates { get; set; }
 
-		public Person(string nickname, Point coordinates)
+		public Person(string nickname, Point coordinates = null)
 		{
 			Nickname = nickname;
-			Coordinates = coordinates;
+
+			if (coordinates != null)
+			{
+				Coordinates = Point.Zero;
+			}
+			else
+			{
+				Coordinates = coordinates;
+			}
+		}
+
+		public override string ToString()
+		{
+			return $"{Nickname}";
 		}
 	}
 }
