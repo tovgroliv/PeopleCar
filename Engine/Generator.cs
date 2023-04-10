@@ -29,10 +29,13 @@ namespace PeopleCar.Engine
 
 		public void PrintState()
 		{
+			int randomCount = 5;
 			int car = 0;
 
+			Console.WriteLine($"{randomCount} случайных машин сцены");
+
 			Random rand = new Random();
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < randomCount; i++)
 			{
 				car = rand.Next(0, _scene.Cars.Length);
 				Console.WriteLine(_scene.Cars[car]);
@@ -40,11 +43,13 @@ namespace PeopleCar.Engine
 
 			car = rand.Next(0, _scene.Cars.Length);
 
+			Console.WriteLine($"\nИгроки вокруг машины {_scene.Cars[car]}");
+
 			Person[] people = _scene.FindPeopleAroundCar(_scene.Cars[car]);
 
 			foreach (Person person in people)
 			{
-				Console.WriteLine($"{person.Nickname} : {Point.Distance(person.Coordinates, _scene.Cars[car].Coordinates)}");
+				Console.WriteLine($"{person} : {Point.Distance(person.Coordinates, _scene.Cars[car].Coordinates)}");
 			}
 		}
 

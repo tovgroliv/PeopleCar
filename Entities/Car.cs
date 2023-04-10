@@ -19,7 +19,7 @@ namespace PeopleCar.Entities
 
 		public override string ToString()
 		{
-			string car = $"{Label}{Coordinates}";
+			string car = $"{Label}{Coordinates} -";
 			string driver = $"водитель : {Driver}";
 
 			string list = "";
