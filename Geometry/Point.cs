@@ -69,8 +69,8 @@ namespace PeopleCar.Geometry
 		/// <returns>Расстояние</returns>
 		public static float Distance(Point first, Point second)
 		{
-			float distance = (float)Math.Sqrt(Math.Pow(
-				Math.Abs(first.X - second.X), 2) *
+			float distance = (float)Math.Sqrt(
+				Math.Pow(Math.Abs(first.X - second.X), 2) *
 				Math.Pow(Math.Abs(first.Y - second.Y), 2)
 			);
 
