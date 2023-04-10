@@ -20,6 +20,11 @@ namespace PeopleCar.Geometry
 			Y = y;
 		}
 
+		public override string ToString()
+		{
+			return $"[{X}:{Y}]";
+		}
+
 		public float DistanceTo(Point to)
 		{
 			float distance = Distance(this, to);
