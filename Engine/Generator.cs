@@ -25,8 +25,6 @@ namespace PeopleCar.Engine
 			GeneratePeople();
 
 			while (!_filled);
-
-			PrintState();
 		}
 
 		public void PrintState()
