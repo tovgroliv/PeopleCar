@@ -5,17 +5,33 @@ using System.Threading;
 
 namespace PeopleCar.Engine
 {
-	public  class Generator
+	/// <summary>
+	/// Генератор сцены
+	/// </summary>
+	public class Generator
 	{
+		/// <summary>
+		/// Сцена, в которой генерируются сущности
+		/// </summary>
 		private Scene _scene;
+		/// <summary>
+		/// Статус заполнения машин игроками
+		/// </summary>
 		private bool _filled = false;
 
+		/// <summary>
+		/// Создание экземпляра генератора
+		/// </summary>
+		/// <param name="scene">Сцена, в которой генерируются сущности</param>
 		public Generator(Scene scene)
 		{
 			_scene = scene;
 			_filled = false;
 		}
 
+		/// <summary>
+		/// Запуск генератора
+		/// </summary>
 		public void Start()
 		{
 			Thread thread = new Thread(new ThreadStart(Fill));
@@ -27,6 +43,9 @@ namespace PeopleCar.Engine
 			while (!_filled);
 		}
 
+		/// <summary>
+		/// Вывод информации генератора
+		/// </summary>
 		public void PrintState()
 		{
 			int randomCount = 5;
@@ -53,6 +72,9 @@ namespace PeopleCar.Engine
 			}
 		}
 
+		/// <summary>
+		/// Заполнение машин игроками
+		/// </summary>
 		private void Fill()
 		{
 			int car = 0;
@@ -65,13 +87,13 @@ namespace PeopleCar.Engine
 					continue;
 				}
 
-				for (int person = 0; person < 4; person++)
+				while (_scene.Cars[car].HasPlace)
 				{
 					while (_scene.People[people] == null);
 
 					_scene.People[people].Coordinates = _scene.Cars[car].Coordinates;
 
-					if (person == 0)
+					if (_scene.Cars[car].Driver == null)
 					{
 						_scene.Cars[car].Driver = _scene.People[people];
 					}
@@ -89,6 +111,10 @@ namespace PeopleCar.Engine
 			_filled = true;
 		}
 
+		/// <summary>
+		/// Генерация машин
+		/// TODO итерации проходят быстро, ввиду чего генератор может сработать в один и тот же момент времени и выдаст одинаковые координаты
+		/// </summary>
 		private void GenerateCars()
 		{
 			Random rand = new Random();
@@ -101,6 +127,9 @@ namespace PeopleCar.Engine
 			}
 		}
 
+		/// <summary>
+		/// Генерация игроков
+		/// </summary>
 		private void GeneratePeople()
 		{
 			for (int i = 0; i < _scene.People.Length; i++)
