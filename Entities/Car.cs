@@ -9,6 +9,7 @@ namespace PeopleCar.Entities
 		public Person Driver { get; set; }
 
 		public Person[] _passengers = new Person[3];
+		public Person[] Passengers { get => _passengers; }
 
 		public Car(string label, Point coordinates)
 		{
