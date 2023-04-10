@@ -4,6 +4,7 @@ namespace PeopleCar.Geometry
 {
 	public class Point
 	{
+		public static Point Zero { get => new Point(0, 0); }
 		public int X { get; set; }
 		public int Y { get; set; }
 
