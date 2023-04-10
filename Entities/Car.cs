@@ -17,6 +17,22 @@ namespace PeopleCar.Entities
 			Coordinates = coordinates;
 		}
 
+		public override string ToString()
+		{
+			string car = $"{Label}{Coordinates}";
+			string driver = $"водитель : {Driver}";
+
+			string list = "";
+			foreach (Person person in Passengers)
+			{
+				list += $"{person},";
+			}
+
+			string passengers = $"пассажиры : ({list})";
+
+			return $"{car} {driver}, {passengers}";
+		}
+
 		public bool HasPlace
 		{
 			get
